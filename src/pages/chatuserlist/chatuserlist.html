@@ -1,0 +1,24 @@
+
+
+
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Trader List</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+<div *ngFor="let friend of friendList" class="row chat-all">
+	<div class="col-2">
+		 <ion-icon name="contact" class="icon-chat-user"></ion-icon>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	
+	</div>
+	<div class="col-10">
+		 <span class="chat-user" (click)="openChat(friend.sender,friend.receiver,friend.chatId)">{{friend.receiver}}</span>
+	</div>
+	
+
+</div>
+</ion-content>

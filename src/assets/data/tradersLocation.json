@@ -1,0 +1,42 @@
+[{
+    
+    "email":"pankaj@gmail.com",     
+    "lattitude":28.412023,
+    "longitude":77.043182
+    
+},
+{
+    
+    "email":"saddam@gmail.com",     
+    "lattitude":28.412089,
+    "longitude":77.044380
+  
+},
+{
+    
+    "email":"subham@gmail.com",    
+    "lattitude":28.413316,
+    "longitude":77.044165
+   
+},
+{
+  
+    "email":"ankit@gmail.com",  
+    "lattitude":28.413448,
+    "longitude":77.043693
+   
+},
+{
+   
+    "email":"sikha@gmail.com",    
+    "lattitude":28.413316,
+    "longitude":77.041633    
+},
+{
+   
+    "email":"kasif@gmail.com",   
+    "lattitude":28.414090,
+    "longitude":77.042228
+    
+}
+]
