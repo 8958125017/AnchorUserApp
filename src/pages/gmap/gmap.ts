@@ -130,8 +130,7 @@ ionViewWillEnter() {
  // click on marker and open tab in buttom
 
   clickedMarker(a){
-    this.data=true;   
-    console.log("b = = = "+a);
+    this.data=true;       
     this.name=a;  
   }
 
@@ -139,6 +138,7 @@ ionViewWillEnter() {
     this.trderinfoGet.email=a;
     this.trderinfoGet.email="BTC";
     this._setupService.getTraderInfo(this.trderinfoGet).subscribe((response)=>{
+    console.log("response = = "+JSON.stringify(response));
     this.data=true;   
     var responseTraderData=response;
       this.traderinfoAfterGet.email=response.email;

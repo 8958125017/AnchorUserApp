@@ -15,9 +15,8 @@ export class SetupService {
     this.http = http;    
     console.log('Hello ServicesProvider Provider');
   }
-     //endpoint_url: string = 'http://192.168.0.:1338';
-     // endpoint_url: string = 'http://192.168.0.120:1338';
-       endpoint_url: string = 'http://192.168.0.120:3000';
+     
+       endpoint_url: string = 'http://198.187.28.200:3000';
 
    //create new user account
     createUserAccount(SignUpDetail: any) {      
@@ -105,11 +104,14 @@ export class SetupService {
         }
 
         // get hard code frienlist 
-        getfrienlist1(){
-         var response = this.http.get('assets/data/friendList.json').map(res => res.json());
+        // getfrienlist1(){
+        //  var response = this.http.get('assets/data/friendList.json').map(res => res.json());
+        //  return response;
+        // } 
+         getfrienlist1 (emailId:any){
+          var response = this.http.post(this.endpoint_url +'/chat/getUserFriends',emailId).map(res => res.json());
          return response;
-        } 
-        
+        }
          // get hard code frienlist 
         getOldMessage(){
          var response = this.http.get('assets/data/messages.json').map(res => res.json());

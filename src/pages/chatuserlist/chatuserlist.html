@@ -15,9 +15,13 @@
 	<div class="col-2">
 		 <ion-icon name="contact" class="icon-chat-user"></ion-icon>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	
 	</div>
-	<div class="col-10">
-		 <span class="chat-user" (click)="openChat(friend.sender,friend.receiver,friend.chatId)">{{friend.receiver}}</span>
+	<div class="col-8">
+		 <span class="chat-user" (click)="openChat(friend.sender,friend.email,friend.chatId)">{{friend.email}}</span>
 	</div>
+	<div class="col-2" *ngIf="friend.isAccepted === false">
+		 <button style="background-color: #3996ea;" ion-button  type="submit"  block>Pending</button>
+	</div>
+	
 	
 
 </div>

@@ -28,7 +28,7 @@ public latitude: number;
   public zoom: number;
   constructor(private geolocation: Geolocation,public _setupService: SetupService, public navCtrl: NavController, public navParams: NavParams,public platform: Platform) {
      let backAction =  platform.registerBackButtonAction(() => {
-        console.log("second");
+       
         this.navCtrl.pop();
         backAction();
       },2)
@@ -40,18 +40,19 @@ public latitude: number;
      //    }               
      //  });
 
-      this._setupService.getfrienlist1().subscribe((response) => {
-           
-          this.friendList=response; 
+      this._setupService.getfrienlist1({email:this.UserId.email}).subscribe((response) => {
+        //console.log("response = = "+console.log(response));
+           if(response.statusCode==200){
+          this.friendList=response.data; 
           
-          console.log("this.friendList = = "+JSON.stringify(this.friendList));      
-                
+        //  console.log("this.friendList = = "+JSON.stringify(this.friendList));      
+             }   
       });
   }
   userdata(){       
      this.user=JSON.parse(localStorage.getItem('logindetail'));
          if(this.user!=null||this.user!=undefined){
-        this.UserId.email=this.user.trader.email;
+        this.UserId.email=this.user.user.email;
       }
     }
 
@@ -74,10 +75,8 @@ public latitude: number;
             timeout:10000
        }; 
        this.geolocation.getCurrentPosition(options).then((response) => {
-       this.latitude =response.coords.latitude;  
-      // alert("this.latitude = = "+this.latitude);           
-       this.longitude =response.coords.longitude; 
-      // alert("this.longitude = = "+this.longitude); 
+       this.latitude =response.coords.latitude;             
+       this.longitude =response.coords.longitude;
       this.zoom = 16;      
 
        }).catch((error) => {   

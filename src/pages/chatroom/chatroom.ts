@@ -4,7 +4,7 @@ import { SendMessageWithContent } from '../../interfaces/user-options';
 import { SetupService } from '../../providers/setup.services'; 
 import   *as socketIOClient  from 'socket.io-client';
 import *as sailsIOClient  from 'sails.io.js';
-
+import { UserEmailId } from '../../interfaces/user-options';
 
 
 @IonicPage()
@@ -28,10 +28,17 @@ export class ChatroomPage {
   }
 
   myInfo = this.messages[0];
-  
+   UserId: UserEmailId = { email: '' };
   constructor(private ngZone: NgZone,public platform:Platform,private navCtrl:NavController,private navParams: NavParams, 
     public _setupService: SetupService, private toastCtrl: ToastController,public events: Events) {
-    this.user=JSON.parse(localStorage.getItem('logindetail'));    
+  
+  this.userdata();
+
+    this.messageDetails.sender=this.UserId.email;  
+    this.nickname = this.messageDetails.sender; 
+    this.messageDetails.recipient=this.navParams.get('receiver');
+    this.messageDetails.chatId=this.navParams.get('chatId'); 
+    this.chatid.chatId=this.messageDetails.chatId;
 
     // used for enabel device back button
     let backAction =  platform.registerBackButtonAction(() => {        
@@ -41,45 +48,44 @@ export class ChatroomPage {
 
    
       //this.io.sails.url = 'http://192.168.0.120:1338'; 
-   this.io.sails.url = 'http://192.168.0.120:3000'; 
-      // connect to socket  
-    var ngZ = this.ngZone;
+   this.io.sails.url = 'http://198.187.28.200:3000'; 
+
+     var ngZ = this.ngZone;
      var event=this.events;
+      // connect to socket  
+  
 
     // create connection between user based on chat id 
 
-     this.io.socket.get('/chat/sendMessage',{chatId:33}, function(data, response){
-      console.log("response = = "+response);
+     this.io.socket.get('/chat/sendMessage',{chatId:this.messageDetails.chatId}, function(data, response){
+    
      });
 
      // get old message based on chat id
 
-     this._setupService.getChatMessages({chatId:1}).subscribe((response)=>{
+     this._setupService.getChatMessages({chatId:this.messageDetails.chatId}).subscribe((response)=>{
        if(response.statusCode==200){
-       console.log("res = = "+JSON.stringify(response));
-        this.messages.push(response.data);
+      
+        this.messages=response.data;
       }else{
-        console.log("No message founds");
+       
       }
      })
 
      // event listner when any events brodcast messages
-
+   
      this.io.socket.on('NEWMESSAGE', function(respons){ 
+       console.log("this.messages.content "+respons);
         ngZ.run(() => {
-        this.messages = respons;
+        this.messages = respons.data;
+        
         event.publish("sharemessage",  this.messages);        
-          console.log("this.messages.content "+this.messages.content);
+          
        });   
     })  
     
 
-    this.messageDetails.sender=this.navParams.get('sender'); 
-    //this.nickname = this.messageDetails.sender;
-    this.nickname = "pankajjoshi115@gmail.com";
-    this.messageDetails.recipient=this.navParams.get('receiver');
-    this.messageDetails.chatId=this.navParams.get('chatId');
-    this.chatid.chatId=this.messageDetails.chatId;
+
 
    //   this._setupService.getOldMessage().subscribe((response)=>{
    //   this.messages=response.data;    
@@ -89,18 +95,23 @@ export class ChatroomPage {
    
  }
 
-
+ userdata(){       
+     this.user=JSON.parse(localStorage.getItem('logindetail'));
+         if(this.user!=null||this.user!=undefined){
+        this.UserId.email=this.user.user.email;
+      }
+    }
  listenToDataChangeEvents() {
  this.events.subscribe('sharemessage', (userData) => {  
        this.messages.push(userData);
+       this.userContent='';
   });         
  }
 
 
  sendMessage() { 
   this.messageDetails.content = this.userContent  ;
-  var ngZ = this.ngZone;
-     var event=this.events;
+ 
      this.io.socket.post('/chat/sendMessage',this.messageDetails, function(data, response){
      console.log("response  = = "+JSON.stringify(response)); 
     
