@@ -16,8 +16,8 @@ export class SetupService {
     console.log('Hello ServicesProvider Provider');
   }
      //endpoint_url: string = 'http://192.168.0.:1338';
-      endpoint_url: string = 'http://192.168.0.120:1338';
-     
+     // endpoint_url: string = 'http://192.168.0.120:1338';
+       endpoint_url: string = 'http://192.168.0.120:3000';
 
    //create new user account
     createUserAccount(SignUpDetail: any) {      
@@ -129,17 +129,17 @@ export class SetupService {
        }
 
         forgotPassword(userDetail: any) {
-        var response = this.http.post(this.endpoint_url + '/trader/sentOtpToEmailForgotPassword',userDetail ).map(res => res.json());
+        var response = this.http.post(this.endpoint_url + '/user/sentOtpToEmailForgotPassword',userDetail ).map(res => res.json());
         return response;
         }
 
        forgotPasswordOTP(otp: any) {
-          var response = this.http.post(this.endpoint_url + '/trader/verifyOtpToEmailForgotPassord',otp ).map(res => res.json());
+          var response = this.http.post(this.endpoint_url + '/user/verifyOtpToEmailForgotPassord',otp ).map(res => res.json());
           return response;
        }
 
        updateForgotPassord(newpasswordvalues: any) {
-         var response =this.http.post(this.endpoint_url +'/trader/updateForgotPassordAfterVerify',newpasswordvalues).map(res =>res.json());
+         var response =this.http.post(this.endpoint_url +'/user/updateForgotPassordAfterVerify',newpasswordvalues).map(res =>res.json());
          return response;
       }
        acceptRequest(isAccepted: any){

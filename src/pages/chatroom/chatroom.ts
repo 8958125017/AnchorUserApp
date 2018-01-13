@@ -39,8 +39,10 @@ export class ChatroomPage {
         backAction();
       },2)
 
-
-    this.io.sails.url = 'http://192.168.0.120:1338';     // connect to socket  
+   
+      //this.io.sails.url = 'http://192.168.0.120:1338'; 
+   this.io.sails.url = 'http://192.168.0.120:3000'; 
+      // connect to socket  
     var ngZ = this.ngZone;
      var event=this.events;
 
@@ -112,10 +114,10 @@ export class ChatroomPage {
    delete this.io.sails;
   }
 
-ngOnDestroy() {
-   this.io.socket.disconnect();
-   delete this.io.sails;
-}
+// ngOnDestroy() {
+//    this.io.socket.disconnect();
+//    delete this.io.sails;
+// }
 
 }
 
