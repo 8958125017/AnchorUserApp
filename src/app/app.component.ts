@@ -7,9 +7,8 @@ import { TutorialPage } from '../pages/tutorial/tutorial';
 import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
 import { ChatuserlistPage } from '../pages/chatuserlist/chatuserlist';
-import { ChatroomPage} from '../pages/chatroom/chatroom';
 import { GmapPage } from '../pages/gmap/gmap';
-
+import { SettingPage } from '../pages/setting/setting';
 import { ConferenceData } from '../providers/conference-data';
 import { UserData } from '../providers/user-data';
 
@@ -39,6 +38,7 @@ export class ConferenceApp {
   loggedInPages: PageInterface[] = [
     { title: 'Home', name: 'GmapPage', component: GmapPage, icon: 'home' },
     { title: 'Chat', name: 'ChatuserlistPage', component: ChatuserlistPage, icon: 'chatbubbles' },
+    { title: 'Setting', name: 'SettingPage', component: SettingPage, icon: 'settings' },
     { title: 'Logout', name: null, component: null, icon: 'log-out',logsOut: true }
    
   ];

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController,NavParams, LoadingController,MenuController,ToastController,AlertController } from 'ionic-angular';
+import { NavController, LoadingController,MenuController,ToastController,AlertController } from 'ionic-angular';
 import { SetupService } from '../../providers/setup.services';
 import { LoginPage } from '../login/login';
 import { NewPasswordvalue } from '../../interfaces/user-options';
@@ -29,10 +29,7 @@ submitted = false;
       
   }
 
-  changecurrentPassword(form: NgForm){  
-    alert("this.newPasswordvalue "+this.newPasswordvalue.userMailId);
-        alert("this.newPasswordvalue "+this.newPasswordvalue.newPassword);
-            alert("this.newPasswordvalue "+this.newPasswordvalue.confirmNewPassword);
+  changecurrentPassword(form: NgForm){      
   	this.submitted = true; 
   	 if (form.valid) {  
    let loading = this.loadingCtrl.create({

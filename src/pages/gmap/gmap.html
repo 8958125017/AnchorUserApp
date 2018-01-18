@@ -34,42 +34,28 @@
           <ion-icon name="contact" class="icon-chat-user"></ion-icon>
         </div>
         <div col-8 offset-2>
-          <p><strong>Name: {{name}}</strong></p>
+          <p><strong>Email: {{trderinfoGet?.email}}</strong></p>
         </div>
         <div col-12 text-center>
-          <ion-row>
-            <ion-col col-4 offset-1 style="    background: #2890fc; border-radius: 15px;
-    color: #fff;">
-              <strong>buy</strong>-<strong>1.00 BTC</strong>
+
+          <ion-row *ngFor="let trader of tradersUpdate">
+            <ion-col col-4 offset-1 style="    background: #2890fc; border-radius: 15px;color: #fff;">
+              <strong>buy</strong>-<strong>{{trader?.buyRate}} {{trader?.currencyType}}</strong>
             </ion-col>&nbsp;
-            <ion-col col-3 style="    background: #2890fc; border-radius: 15px;
-    color: #fff;">
-              <strong>sell</strong>-<strong>1.00 BTC</strong>
+            <ion-col col-3 style="    background: #2890fc; border-radius: 15px;color: #fff;">
+              <strong>sell</strong>-<strong>{{trader?.sellRate}} {{trader?.currencyType}}</strong>
             </ion-col>&nbsp;
-            <ion-col col-3 style="    background: #2890fc; border-radius: 15px;
-    color: #fff;">
-              <strong>volume</strong>-<strong>1</strong>
+            <ion-col col-3 style="    background: #2890fc;border-radius: 15px; color: #fff;">
+              <strong>volume</strong>-<strong>{{trader?.volume}}</strong>
             </ion-col>
           </ion-row>
-          <br>
-          <ion-row>
-            <ion-col col-4 offset-1 style="    background: #2890fc; border-radius: 15px;
-    color: #fff;">
-              <strong>buy</strong>-<strong>1.00 INR</strong>
-            </ion-col>&nbsp;
-            <ion-col col-3 style="    background: #2890fc; border-radius: 15px;
-    color: #fff;">
-              <strong>sell</strong>-<strong>1.00 INR</strong>
-            </ion-col>&nbsp;
-            <ion-col col-3 style="    background: #2890fc; border-radius: 15px;
-    color: #fff;">
-              <strong>volume</strong>-<strong>1</strong>
-            </ion-col>
-          </ion-row>
+
+
+         
         </div>
       </div>
     <div class="row no-margin footer-button-line-height white-text">
-       <button ion-button block (click)="requestToTraders(name)">Request</button>
+       <button ion-button block (click)="requestToTraders(trderinfoGet?.email)">Request</button>
     </div>
   </div>
 </ion-content>

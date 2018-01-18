@@ -17,6 +17,7 @@ import { ChatroomPage} from '../pages/chatroom/chatroom';
 import { GmapPage } from '../pages/gmap/gmap';
 import { AgmCoreModule } from '@agm/core';
 import { SetupService } from '../providers/setup.services';
+import { SettingPage } from '../pages/setting/setting';
 import { Geolocation } from '@ionic-native/geolocation';
 import { ConferenceData } from '../providers/conference-data';
 import { UserData } from '../providers/user-data';
@@ -32,6 +33,7 @@ import { UserData } from '../providers/user-data';
     ChangepasswordPage,    
     GmapPage,   
     SignupPage,
+    SettingPage,
  
   ],
   imports: [
@@ -50,6 +52,7 @@ import { UserData } from '../providers/user-data';
         { component: ChangepasswordPage, name: 'ChangepasswordPage', segment: 'changepassword' },
         { component: ChatuserlistPage, name: 'ChatuserlistPage', segment: 'Chatuserlist' },
         { component: ChatroomPage, name: 'ChatroomPage', segment: 'chatroom' },      
+        { component: SettingPage, name: 'SettingPage', segment: 'setting' },      
         { component: GmapPage, name: 'Gmap', segment: 'gmap' },       
       ]
     }),
@@ -65,6 +68,7 @@ import { UserData } from '../providers/user-data';
     ForgotpasswordPage,
     ChangepasswordPage,   
     GmapPage, 
+    SettingPage,
     SignupPage,  
   ],
   providers: [

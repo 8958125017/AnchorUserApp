@@ -5,7 +5,6 @@ import { UserData } from '../../providers/user-data';
 import { UserOptions,LoginDetail } from '../../interfaces/user-options';
 import { ForgotpasswordPage } from '../forgotpassword/forgotpassword';
 import { SignupPage } from '../signup/signup';
-import { ChangepasswordPage } from '../changepassword/changepassword';
 import { GmapPage } from '../gmap/gmap';
 import { SetupService } from '../../providers/setup.services';
 import { Storage } from '@ionic/storage';

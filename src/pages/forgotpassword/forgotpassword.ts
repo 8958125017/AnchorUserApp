@@ -73,7 +73,7 @@ responseData:any;
           text: 'submit',
           handler: data => {
             let loading = this.loadingCtrl.create({
-       content: 'verifying otp...'
+            content: 'verifying otp...'
       });
             loading.present();
             this._setupService.forgotPasswordOTP({"userMailId": response.userMailId,"otp": data.otp

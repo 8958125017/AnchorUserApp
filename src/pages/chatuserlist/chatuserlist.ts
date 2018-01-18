@@ -4,6 +4,7 @@ import { SetupService } from '../../providers/setup.services';
 import { ChatroomPage } from '../../pages/chatroom/chatroom';
 import { UserEmailId } from '../../interfaces/user-options';
 import { Geolocation } from '@ionic-native/geolocation';
+ import  {GmapPage } from '../gmap/gmap';
 /**
  * Generated class for the ChatuserlistPage page.
  *
@@ -33,19 +34,12 @@ public latitude: number;
         backAction();
       },2)
      this.userdata();
-     // this._setupService.getfrienlist1(this.UserId.email).subscribe((response) => {
-     //    if(response.statusCode==200){
-     //      this.friendList=response.data; 
-     //      console.log("this.friendList = = "+JSON.stringify(this.friendList));      
-     //    }               
-     //  });
+    
 
-      this._setupService.getfrienlist1({email:this.UserId.email}).subscribe((response) => {
-        //console.log("response = = "+console.log(response));
+      this._setupService.getfrienlist({email:this.UserId.email}).subscribe((response) => {
            if(response.statusCode==200){
-          this.friendList=response.data; 
-          
-        //  console.log("this.friendList = = "+JSON.stringify(this.friendList));      
+              this.friendList=response.data; 
+              console.log(" this.friendList = = "+JSON.stringify(this.friendList)); 
              }   
       });
   }
@@ -83,6 +77,10 @@ public latitude: number;
      });
    });  
 
+  }
+
+  addTraders(){
+    this.navCtrl.setRoot(GmapPage);
   }
 
 }

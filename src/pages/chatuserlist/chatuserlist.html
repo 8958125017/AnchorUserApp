@@ -11,6 +11,7 @@
 </ion-header>
 
 <ion-content padding>
+
 <div *ngFor="let friend of friendList" class="row chat-all">
 	<div class="col-2">
 		 <ion-icon name="contact" class="icon-chat-user"></ion-icon>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	
@@ -19,10 +20,12 @@
 		 <span class="chat-user" (click)="openChat(friend.sender,friend.email,friend.chatId)">{{friend.email}}</span>
 	</div>
 	<div class="col-2" *ngIf="friend.isAccepted === false">
-		 <button style="background-color: #3996ea;" ion-button  type="submit"  block>Pending</button>
+		 <button style="background-color: #3996ea;" ion-button  type="submit"  >Pending</button>
 	</div>
-	
-	
-
 </div>
+
+<!-- <div *ngIf="!friendList">
+	No Traders avaliable here : <button style="background-color: #3996ea;" ion-button  type="submit"  (click)="addTraders()">Add Trader</button>
+</div> -->
+
 </ion-content>

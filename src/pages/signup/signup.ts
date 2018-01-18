@@ -32,10 +32,12 @@ export class SignupPage {
   loading.present();
     this._setupService.createUserAccount(this.signup).subscribe((result) => {   
      if(result.statusCode== 200){
-          this.responseData = result;         
+          this.responseData = result;  
+          console.log("this.responseData = = "+JSON.stringify(this.responseData));       
           loading.dismiss();            
           localStorage.setItem('signUp',JSON.stringify(this.responseData));
-          const response=JSON.parse(localStorage.getItem('signUp'));                  
+          var response=JSON.parse(localStorage.getItem('signUp'));  
+           console.log("this.responseData = = "+JSON.stringify(response.userMailId));                     
            let toast = this.toastCtrl.create({
                      message: 'OTP sent to your email id',
                      showCloseButton: true,
@@ -85,10 +87,11 @@ export class SignupPage {
                content: 'verifying otp...'
              });
                loading.present();
-                 this._setupService.VerificationEmail({"email": response.traderMailId,"otp": data.otp
-                  }).subscribe((result) => {  
+                 this._setupService.VerificationEmail({"email": response.userMailId,"otp": data.otp
+                  }).subscribe((result) => {                  
                 loading.dismiss(); 
                if(result.statusCode== 200){
+
                      let toast = this.toastCtrl.create({
                      message: 'SignUp successfully',
                      showCloseButton: true,

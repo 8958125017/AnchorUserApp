@@ -69,14 +69,22 @@ export interface UserEmailId{
   }
 
     export interface TrderinfoGet{
-    "email":string;
-    "currency":string;
-
+    "email":string;    
   }
 
-    export interface updateValue{
+
+  export interface updateValue{
     "email":string;
     "buyRate": any;
     "sellRate": any;
-    "volume":any;  
+    "volume":any;
+    "currencyType":string;
+  }
+
+
+  export interface PasswordValues{
+    "userMailId": string;
+    "currentPassword": string;
+    "newPassword": string;
+    "confirmNewPassword": string;
   }
